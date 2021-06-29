@@ -23,3 +23,33 @@ order by count(*) desc ;
 
 SELECT release_year FROM film WHERE title='Academy Dinosaur';
 SELECT AVG(length) FROM film;
+ /* Questions from 16-25*/
+ /*Question 16 answer:*/
+ SELECT AVG(length)
+ FROM film f
+ JOIN film_category fc ON f.film_id=fc.film_id
+ GROUP BY fc.category_id;
+ 
+ SELECT * FROM film WHERE description LIKE '%robot%';
+ 
+ SELECT COUNT(release_year)FROM film WHERE release_year=2010 ;
+ 
+ SELECT * FROM film_category where category_id=5; /*Unsure which is the ID for horror category*/
+ 
+ SELECT first_name , last_name FROM staff WHERE staff_id=2;
+ 
+ /*Question 21: List all the movies that Fred Costner has appeared in.*/
+ SELECT title FROM film f
+ JOIN film_actor fa ON f.film_id=fa.film_id
+ JOIN actor a ON a.actor_id=fa.actor_id
+ WHERE a.first_name='Fred' AND a.last_name='Costner';
+ 
+ SELECT DISTINCT language_id FROM film;
+ 
+ SELECT * FROM language ORDER BY name DESC;
+ 
+ SELECT * FROM actor WHERE last_name LIKE '%son';
+ 
+ /*QUESTION 25*/
+ SELECT category_id, COUNT(category_id) AS value
+ FROM film_category GROUP BY category_id ORDER BY value DESC LIMIT 1;
