@@ -34,7 +34,8 @@ SELECT AVG(length) FROM film;
  
  SELECT COUNT(release_year)FROM film WHERE release_year=2010 ;
  
- SELECT * FROM film_category where category_id=5; /*Unsure which is the ID for horror category*/
+ SELECT title FROM film f JOIN film_category fc ON f.film_id=fc.film_id 
+ WHERE fc.category_id = (SELECT category_id FROM category WHERE name = 'HORROR');
  
  SELECT first_name , last_name FROM staff WHERE staff_id=2;
  
